@@ -3,7 +3,7 @@ library vector;
 import 'dart:math';
 
 class Vector3 {
-  const Vector3({required this.x, required this.y, required this.z});
+  const Vector3(this.x, this.y, this.z);
 
   final num x;
   final num y;
@@ -11,10 +11,10 @@ class Vector3 {
 
   // Special Vectors
 
-  static const Vector3 left = Vector3(x: 1, y: 0, z: 0);
-  static const Vector3 up = Vector3(x: 0, y: 1, z: 0);
-  static const Vector3 forward = Vector3(x: 0, y: 0, z: 1);
-  static const Vector3 zero = Vector3(x: 0, y: 0, z: 0);
+  static const Vector3 left = Vector3(1, 0, 0);
+  static const Vector3 up = Vector3(0, 1, 0);
+  static const Vector3 forward = Vector3(0, 0, 1);
+  static const Vector3 zero = Vector3(0, 0, 0);
 
   // Properties
 
@@ -35,7 +35,7 @@ class Vector3 {
   // Operations
 
   Vector3 operator *(num scalar) {
-    return Vector3(x: x * scalar, y: y * scalar, z: z * scalar);
+    return Vector3(x * scalar, y * scalar, z * scalar);
   }
 
   Vector3 operator /(num scalar) {
@@ -46,7 +46,7 @@ class Vector3 {
   }
 
   Vector3 operator +(Vector3 other) {
-    return Vector3(x: x + other.x, y: y + other.y, z: z + other.z);
+    return Vector3(x + other.x, y + other.y, z + other.z);
   }
 
   Vector3 operator -() {
@@ -64,14 +64,12 @@ class Vector3 {
   }
 
   Vector3 elementwiseProduct(Vector3 other) {
-    return Vector3(x: x * other.x, y: y * other.y, z: z * other.z);
+    return Vector3(x * other.x, y * other.y, z * other.z);
   }
 
   Vector3 crossProduct(Vector3 other) {
-    return Vector3(
-        x: y * other.z - z * other.y,
-        y: z * other.x - x * other.z,
-        z: x * other.y - y * other.x);
+    return Vector3(y * other.z - z * other.y, z * other.x - x * other.z,
+        x * other.y - y * other.x);
   }
 
   // Representations
