@@ -68,4 +68,8 @@ class Quaternion {
   String toString() {
     return "Quaternion($real, $vec)";
   }
+
+  List<num> toList() {
+    return [real, ...vec.toList()];
+  }
 }
